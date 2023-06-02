@@ -1,0 +1,6 @@
+.directory-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;  /*items가 줄바꿈이 됨. nowrap은 줄바꿈 하지 않고 한 줄로 표시*/
+    justify-content: space-between;
+  }

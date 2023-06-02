@@ -1,0 +1,23 @@
+//top level style sheet
+
+body {
+  margin: 0;
+  padding: 20px 40px;
+  font-family: 'Arvo', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Arvo', serif,
+    monospace;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
