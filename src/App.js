@@ -17,6 +17,7 @@ import { setCurrentUser } from './store/user/user.action';
 const App = () => {
   const dispatch = useDispatch();
 
+  //user 정보는 very top level에서 관리해야하므로 App.js에서 useEffect hook으로 정의한다
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
@@ -27,6 +28,8 @@ const App = () => {
 
     return unsubscribe;
   }, []);
+  //dispatch가 절대 변하지 않기 때문에 dependency로 넣으나 마나 차이가 없다.
+  //다만 리액트는 이를 모르기 때문에 dispatch를 넣으라고 경고메세지를 띄우는 것
 
   return (
     <Routes>
