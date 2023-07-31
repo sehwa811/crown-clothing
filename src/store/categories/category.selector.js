@@ -23,3 +23,8 @@ export const selectCategoriesMap = createSelector(
   }
 );
 //categoris array가 변하지 않는한 이 구문은 실행되지 않는다. 그냥 이전에 계산되어있던 값을 줘라
+
+export const selectCategoriesIsLoading = createSelector(
+  [selectCategoryReducer],
+  (categoriesSlice) => categoriesSlice.isLoading
+);
