@@ -51,7 +51,7 @@ export const db = getFirestore();
 //SHOPT_DATA batch하는 func
 export const addCollectionAndDocuments = async (
   collectionKey,
-  objectsToAdd,
+  objectsToAdd
 ) => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
@@ -66,13 +66,12 @@ export const addCollectionAndDocuments = async (
 };
 
 export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, 'categories');
+  const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
   const querySnapShot = await getDocs(q);
 
-  return querySnapShot.docs.map(docSnapshot => docSnapshot.data());
-}
-
+  return querySnapShot.docs.map((docSnapshot) => docSnapshot.data());
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,
@@ -106,7 +105,7 @@ export const createUserDocumentFromAuth = async (
   }
 
   //if user data exists in db
-  return userDocRef;
+  return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -125,3 +124,16 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
+};
