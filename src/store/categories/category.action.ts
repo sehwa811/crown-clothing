@@ -19,10 +19,10 @@ export type FetchCateogriesFailed = ActionWithPayload<
   Error
 >;
 
-export type CategoryAction =
+/* export type CategoryAction =
   | FetchCategoriesStart
   | FectchCategoriesSuccess
-  | FetchCateogriesFailed;
+  | FetchCateogriesFailed; */
 
 export const fetchCategoriesStart = withMatcher(
   (): FetchCategoriesStart =>
